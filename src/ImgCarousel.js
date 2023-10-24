@@ -1,6 +1,7 @@
 const Carousel = (images, content) => {
   let imgIndex = 0;
   let imgs = images;
+  let skipCarousel = false
 
   const scafolding = () => {
     removeEvents();
@@ -104,10 +105,13 @@ const Carousel = (images, content) => {
     const carousel = scafolding();
     content.appendChild(carousel);
     addEvents();
+    slideshow();
   };
 
-  const sideClickHandler = (direction = 1) => {
+  const sideClickHandler = (direction = 1, skip = true) => {
     return () => {
+      if (skip === false && skipCarousel == true) return
+      skipCarousel = skip
       imgIndex += direction;
       update();
     };
@@ -144,6 +148,13 @@ const Carousel = (images, content) => {
       pickR.removeEventListener("click", sideClickHandler);
     }
   };
+
+  const slideshow = () => {
+    setTimeout(()=>{
+        sideClickHandler(1, false)()
+        skipCarousel = false
+    }, 5000)
+  }
 
   return { update };
 };

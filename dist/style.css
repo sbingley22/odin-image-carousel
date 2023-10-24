@@ -6,6 +6,7 @@ html {
 * {
   box-sizing: border-box;
   margin: 0;
+  padding: 0;
 }
 
 html,
@@ -22,7 +23,6 @@ body,
   grid-template-rows: 80vh 20vh;
   justify-items: center;
   align-items: center;
-  margin: 10px;
   padding: 0;
   background-color: rgb(11, 11, 11);
   width: 100vw;
